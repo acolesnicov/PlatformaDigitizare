@@ -73,6 +73,11 @@ def preprocess(request):
     else:
         return JsonResponse({"code":500,"msg":"server error"})
 
+def heterogen(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        # TODO implement "heterogen"
+        return JsonResponse({"code":200,"msg":"success"})
 
 def ocr(request):
     if request.method == 'POST':
