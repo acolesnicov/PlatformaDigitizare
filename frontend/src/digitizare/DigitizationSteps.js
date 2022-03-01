@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import StepZilla from "../components/StepZilla";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
+import Step2_5 from "./Step2_5";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
 import Step5 from "./Step5";
@@ -91,15 +92,26 @@ export default class DigitizationSteps extends Component {
         ),
       },
       {
-        name: "2. Preprocesează imaginea",
-        component: (
-          <Step2
-            getStore={() => this.getStore()}
-            updateStore={(u) => {
-              this.updateStore(u);
-            }}
-          />
-        ),
+          name: "2. Preprocesează imaginea",
+          component: (
+              <Step2
+                  getStore={() => this.getStore()}
+                  updateStore={(u) => {
+                      this.updateStore(u);
+                  }}
+              />
+          ),
+      },
+      {
+          name: "2.5. Clasificarea conținutului eterogen",
+          component: (
+              <Step2_5
+                  getStore={() => this.getStore()}
+                  updateStore={(u) => {
+                      this.updateStore(u);
+                  }}
+              />
+          ),
       },
       {
         name: "3. OCR",

@@ -349,4 +349,4 @@ const Step2 = (props) => {
         </div>
     );
 };
-export default Step2.5;
+export default Step2_5;

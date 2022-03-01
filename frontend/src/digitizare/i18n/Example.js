@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import StepZilla from '../../main';
 import Step1 from './Step1';
 import Step2 from './Step2';
-import Step2.5 from './Step2.5';
+import Step2_5 from './Step2_5';
 import Step3 from './Step3';
 import Step4 from './Step4';
 import Step5 from './Step5';
@@ -48,7 +48,7 @@ class Example extends Component {
     [
       {name: t("step1"), component: <Step1 t={t} getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
       { name: t("step2"), component: <Step2 t={t} getStore={() => (this.getStore())} updateStore={(u) => { this.updateStore(u) }} /> },
-      { name: t("step2.5"), component: <Step2.5 t={t} getStore={() => (this.getStore())} updateStore={(u) => { this.updateStore(u) }} /> },
+      { name: t("step2.5"), component: <Step2_5 t={t} getStore={() => (this.getStore())} updateStore={(u) => { this.updateStore(u) }} /> },
       {name: t("step3"), component: <Step3 t={t} getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
       {name: t("step4"), component: <Step4 t={t} getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
       {name: t("step5"), component: <Step5 t={t} getStore={() => (this.getStore())} updateStore={(u) => {this.updateStore(u)}} />},
