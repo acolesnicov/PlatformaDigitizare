@@ -1,12 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\backend",
-    "\\backend\\access",
-    "\\backend\\settings",
     "\\frontend",
-    "\\frontend\\docs"
+    "\\frontend\\src",
+    "\\frontend\\src\\digitizare"
   ],
-  "SelectedNode": "\\backend\\access\\urls.py",
+  "SelectedNode": "\\frontend\\src\\digitizare\\Step2.js",
   "PreviewInSolutionExplorer": false
 }

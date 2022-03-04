@@ -14,7 +14,7 @@ import { Fancybox } from "@fancyapps/ui/src/Fancybox/Fancybox.js";
 import "@fancyapps/ui/dist/fancybox.css";
 
 // Preprocess the images
-const Step2 = (props) => {
+const Step2_5 = (props) => {
     console.log(props.getStore());
 
     const sourceFiles = props.getStore().sourceFiles;
@@ -103,7 +103,7 @@ const Step2 = (props) => {
     };
 
     return (
-        <div className="step step2">
+        <div className="step step2_5">
             <div className="row">
                 <Form id="Form" className="form-horizontal">
                     <Form.Group>
