@@ -1,10 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\backend",
+    "\\backend\\access",
     "\\frontend",
+    "\\frontend\\dist",
+    "\\frontend\\docs",
     "\\frontend\\src",
-    "\\frontend\\src\\digitizare"
+    "\\frontend\\src\\assets",
+    "\\frontend\\src\\components",
+    "\\frontend\\src\\css"
   ],
-  "SelectedNode": "\\frontend\\src\\digitizare\\Step2.js",
+  "SelectedNode": "\\frontend\\src\\digitizare\\DigitizationSteps.js",
   "PreviewInSolutionExplorer": false
 }

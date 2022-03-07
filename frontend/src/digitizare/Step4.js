@@ -1,199 +1,318 @@
-"use strict";
+'use strict';
 
-import React, { Component, useRef } from "react";
-import PropTypes from "prop-types";
-import Keyboard from "react-simple-keyboard";
-import "react-simple-keyboard/build/css/index.css";
-import layouts from "../components/KeyboardLayouts";
+import React, { Component } from 'react';
+import Form from 'react-bootstrap/Form';
+import Accordion from 'react-bootstrap/Accordion';
+import Button from 'react-bootstrap/Button';
 
-class Step4 extends Component {
+// OCR
+export default class Step4 extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      ocrResults: props.getStore().ocrResults,
-      // ocrResults: [
-      //   "\ufeffн у се штие ын че ан, дар ера ун ом некибзуит ла требь ши жумулит де соартэ. Унде н’ар фи лукрат, фэчя кыте о гафэ, де токмай ыць луний мыниле ’н кап. Шефилор ли се фэчя милэ де нэтынгэрииле луй ши-л му-тау де коло-коло, пынэ ын сфыршит се помени, бьетул ом, дрегэтор песте алиментация публика, С'а букурат омул де маштабул активитэций ши унде се репеде де адунэ тоатэ оастя алиментацией публиче ши унде се уркэ ла трибунэ ши цине о кувынта-ре:\n— Скумпий мей, в’ам адунау коля, ка сэ вэ аминтеск, поате май ку тылк декыт алций, кэ мынкаря есте уна дин кондицииле фундаментале але фиинцэрий омулуй... Ятэ о пилдэ: я ынчеркаць ши ну хрэниць вителе. Ындатэ ор ынчепе сэ збере...\nЛумя рэмасе таблоу. Пынэ акум нимень ну ле ворбисе атыт де фрумос ши ку пилде атыт де конкрете. Инструкция ноул шеф шь-о ынкее аша:\n— Еу персонал вой трече прин фиекаре оспэтэрие сэ дмскутэм лынгэ кастроане, че фел де мынкаре плаче публикулуй... Вэ дореск спор ла мункэ, яр консуматорилор пофтэ бунэ!\nБукэтарий сынт оамень ку фанте-зие. Де ачея песте ноапте шь-ау ре-визуит куноштинцеле кулинаре, ка сэ ну се дее де рушине. Пе унде стэтяу ла ындоялэ, май ынтребау ши де соакре.\n— Че авець бун? — зисе омул ын лок де бинеце, сосит ла прима букэтэрие ку ноаптя ын кап. Симци о кэлдурэ плэкутэ де абурь.\nАкасэ ну луасе нич нафурэ ын гурэ. Кыт ай зиче пеште букэтарий ый пусерэ о штюка ымплутэ, кытева фелурь де икре ши лифтие де крап.\n— Де унде сэ ынчеп?.. А!.. Де ла куркан!\n*— Черем скузё, — зисерэ букэтарий фыстычиць. — Букате ле куркан о сэ авем мыне.\nА мынкат ку пофтэ, мэкар кэ ну ера куркан.\nНетезинду-се ушурел песте пынтече, пропусе субалтернилор, ка пе меселе дин оалэ сэ фие ынтотдяуна саре, килер мэчинат ши муштар. Кэч консуматорий фак гэлэжие дин кау-\nМЭМЭЛИГА\nза аста ши чер кондика де рекламаций. Букэтарий ынсэ ау зымбит дул-чаг:\n— Се поате... дар... хык... штиць... кум сэ вэ спунем?.. Оспэтэрия ноастрэ е диететикэ.\n— Пунець! Доар мынкаря есте уна дин кондицииле де самэ але екзистенцей омулуй.\nШефул плякэ, дар ну уйтэ ла амязэ сэ трякэ пе ла алтэ оспэтэрие ын интерес де сервичиу. Яр ын урма луй консуматорий визитау «диететика» ши стэтяу ла рынд аштептынд кондика де рекламаций. Оамений ышь аш-терняу фиекаре ын фелул сэу немул-цумириле. «Ной обсервэм, — скрие Иванов сау Гуцу,— кэ мыякэруриле се прегэтеск прост. Сервиря консуматорилор ну-й дин челе май плэкуте. Ын сала читим инскрипция: «Колек-тивул оспэтэрией луптэ пентру титлул де бригадэ а мунчий комунисте». Дупэ мине, ачастэ лозинка е афишатэ ын оспэтэрия № З пря девреме, мэкар кэ ын фонд еа есте ун лукру фоарте бун». Ши дупэ фиекаре рекламацие шефул вине сингур сэ рэспундэ ын скрис, кум кэ «мынкаря есте уна дин проблемеле де базэ але сочиализмулуй... Аша кэ май сынт греутэць ши букэтарий виноваць сынт педепсиць пе линие административэ!»\nЗилеле де лукру тречяу ын маре кин. Май алес кынд визита кафеняуа ку мынкэрурь национале «Пэпушой». Доар аколо унде лукрасе май ынаинте авя де афаче ку орьче врей, нумай ну ку асортиментул продуселор. Де унде сэ штие, бунэоарэ, кум е мэ-мэлигуца ку брынзэ де оае, ку жу-мере, токана ку муждей? Доар ши еле фак парте дин «кондицииле де самэ але фиинцэрий омулуй». Ынсэ кум аратэ еле? Букэтарий сэ штие? Да де унде! Букэтарий ыс тот «фраций» луй, ачеясйь дупэ густ ши киб-зуялэ... Сэ фие ал найбей чел де-а нэскочит ши кулинария аста!\nЫл принде ынтр’о зи ун клиент\nЕ РОТУНДЭ\nаморезат де «Пэпушой» ши-л я ку кресчендо:\n— Думнята ынцележь че фел де алуат е ачеста?\n— Мэмэлигэ!\n— Пэй, мэмэлига-й аша, бре?.. Кынд ый фяртэ бине, еа ну се липеш-те де фарфурие. Е густоасэ ши ро-тундэ... Ротундэ, ынцележь?..\n— Ыхы... Ротундэ! Ын формэ де «О»!... Ротундэ!\n— Стай! Думнята ну мэ луа ку ротунда... Мэмэлига май есте ши алтфел: урс де мэмэлигэ, мэмэлигэ прэжитэ, мэмэлигэ ла куптор. Ултима се сервеште ын формэ.\n— Жуст! Ын формэ де «О>!..\nКонсуматорул претенциос н’а скрис нимик ын кондика де рекламаций. Ел штия динаинте рэспунсул; «мынкаря есте уна дин проблемеле... аша кэ... букэтарий сынт педепсиць пе линие...»\nСэ май визитезе вре-о оспэтэрие? Ый есте лехамите! Шефул кулинари-лор се дуче ла рестаурант. Ынтрэ. Веде музика. Ши командэ кынтекул «И баранку не бросал шофер». Пе урмэ, трече директ ла букэтэрие. Аколо букэтарий авяу нумай антрикоате. Шефул а черут бифштекс. Пынэ и л-ор прэжи, буфетара ыл сервеште ку ун коньяк. Семидиспус ел я оспэтэрица ла дане ши унде-й зиче уна солдэ-цяскэ, ын чуда тутурор... Адикэ, а «тутурор» е пря мулт спус. Ын сала ера нумай клиентул чела де ла «Пэпушой», каре-й спусе, кэ мэмэлига е ротундэ, ши венисе мэкар аич с’о гэсяскэ.\nШи акум ворба де ла ынчепут: «Ну се штие ын че ан, дар ера ун ом...» Ба ши анул се штие, ши омул се штие. Чел каре кондуче алиментация публикэ дин Сорока есте Н. Корол. Ной интенционат ну л-ам нумит де одатэ, деоарече ын фойлетон (ка прототипь) фигурязэ ши алць дрегэ-торь, каре штиу доар уна ши бунэ: мэмэлига е ротундэ!\nА. ВАСИЛЮК",
-      //   '\ufeffлумилор черешть, ка ши ын в’|яца челей май неын-сэмнате в!ецуитоаре, семнул нумелуй Вииторулуй.\nВеститул ынвэцат енглез ши адынк кужетэтор Бакон, пэринтеле штиинцей, ынтемеяте пе довезь вэзуте, спуне, кы фшнца адевэратей штиинце ши адевэратей философа е де а дуче омениря ла десэвыршитэ причепере а Зидиторулуй ей. ши чел май бун мижлок спре а-шь ажунже цинта ачяста есте, ле лынгы Сфынта Скрилтуры, черчетаря лум1й, ынтемеяты пе довезь вэзуте. Ши ачесте ворбе, спусе де Бакон, сынт пентру фиекаре минте лумина! ы ку атыт мэй лэмурите ши май адевэрате, ку кыт ши минтя ачяста пэтрунде май адынк ши ку кыт куноштинцеле ей сынт май ынтинсе.\nЛуаць, де пилды, пе Ньютон, каре а лэмурит лежиле мишкэрь тутурор стелелор ши сорилор дин луме. Чейлалць ынвэцаць марь ну гэсеск дестуле ворбе, ка сы-л лауде, ши ел, ачест маре Ньютон, обишнуя сы спуе деспре сине урмэтоареле: „ну шву кум и се паре лум1й, дар м!е ми се паре, кы сынт ка ун копил мик. каре се жоакы пе малул мэр1й ши адуны петричеле албе ши лучюасе ши скойчь де маре, ын време че очеанул чел .маре акопере ши аскунде адевэрул динаинтя луй". Аша зичя деспре сине ачест маре ур!аш ал минщй ши ал штшнцей, ши фацы де Думнезэу авя атыта плекаре ши атыта евлав1е, ынкыт, кынд мержя пе улицы, ну путя сы ростяскы нумеле луй Думнезэу, фэры сы-шь ее пэ-лэр1я дин кап.\nВеститул математик ши натуралист Ампер, каре а ынтемеят о ноуы игпинцы—електродинамика, сфэ-туеште астфель пе ун тынэр: .Фереште-те де а те ынделетничи нумай ку штшнца, кум ай фэкут лэны',
-      // ],
-      sourceFiles: props.getStore().sourceFiles,
+      email: props.getStore().email,
+      period: props.getStore().period,
+      typography: props.getStore().typography,
       preprocessedFiles: props.getStore().preprocessedFiles,
-      layoutName: "default",
-      show: false,
-      // input: ""
-      inputID: 0,
+      alphabet: props.getStore().alphabet,
+      sourceFiles: props.getStore().sourceFiles,
+      ocrResults: props.getStore().ocrResults,
+      show: true,
     };
-    // this.keyboard = React.createRef();
 
-    this.cyrillicRomanianLayout = layouts[props.getStore().alphabet];
+
+    // this._validateOnDemand = true; // this flag enables onBlur validation as user fills forms
+
+    // this.validationCheck = this.validationCheck.bind(this);
+    // this.isValidated = this.isValidated.bind(this);
+  }
+
+  handleFilePath(filePath) {
+    if (filePath.length > 0) return 'http://127.0.0.1:8000/media/' + filePath;
+    return "https://cdn.presslabs.com/wp-content/uploads/2018/10/upload-error.png";
   }
 
   componentDidMount() { }
 
-  onChange(e) {
-    let newState = {};
-    newState[e.target.name] = e.target.value;
-    this.setState(newState);
+  componentWillUnmount() { }
+
+  // isValidated() {
+  //   const userInput = this._grabUserInput(); // grab user entered vals
+  //   const validateNewInput = this._validateData(userInput); // run the new input against the validator
+  //   let isDataValid = false;
+
+  //   // if full validation passes then save to store and pass as valid
+  //   if (Object.keys(validateNewInput).every((k) => { return validateNewInput[k] === true })) {
+  //     if (this.props.getStore().email != userInput.email || this.props.getStore().period != userInput.period) { // only update store of something changed
+  //       this.props.updateStore({
+  //         ...userInput,
+  //         savedToCloud: false // use this to notify step4 that some changes took place and prompt the user to save again
+  //       });  // Update store here (this is just an example, in reality you will do it via redux or flux)
+  //     }
+
+  //     isDataValid = true;
+  //   }
+  //   else {
+  //     // if anything fails then update the UI validation state but NOT the UI Data State
+  //     this.setState(Object.assign(userInput, validateNewInput, this._validationErrors(validateNewInput)));
+  //   }
+
+  //   return isDataValid;
+  // }
+
+  validationCheck() {
+    if (!this._validateOnDemand)
+      return;
+
+    const userInput = this._grabUserInput(); // grab user entered vals
+    const validateNewInput = this._validateData(userInput); // run the new input against the validator
+
+    this.setState(Object.assign(userInput, validateNewInput, this._validationErrors(validateNewInput)));
   }
 
-  onKeyPress(button) {
-    if (button === "{shift}" || button === "{lock}") this.handleShift();
-  }
+  // _validateData(data) {
+  //   return {
+  //     periodVal: (data.period != 0), // required: anything besides N/A
+  //     emailVal: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(data.email), // required: regex w3c uses in html5
+  //   }
+  // }
 
-  handleShift() {
-    const layoutName = this.state.layoutName;
-    this.setState({
-      layoutName: layoutName === "default" ? "shift" : "default",
-    });
-  }
+  // _validationErrors(val) {
+  //   const errMsgs = {
+  //     periodValMsg: val.periodVal ? '' : 'A period selection is required',
+  //     emailValMsg: val.emailVal ? '' : 'A valid email is required'
+  //   }
+  //   return errMsgs;
+  // }
 
-  setActiveInput(event) {
-    this.setState({ inputID: event.target.id });
-    console.log(event.target.id);
-  }
+  // _grabUserInput() {
+  //   return {
+  //     period: this.refs.period.value,
+  //     email: this.refs.email.value
+  //   };
+  // }
 
-  onChangeInput(event) {
-    const input = event.target.value;
-    this.state.ocrResults[this.state.inputID] = input;
-    this.setState({ ocrResults: [...this.state.ocrResults] });
-    console.log(this.state.ocrResults);
-    this.props.updateStore({ ocrResults: this.state.ocrResults });
-    // this.keyboard.setInput(input);
-  }
-
-  onChangeKeyboardInput(input, a) {
-    console.log(input, a);
-    const inputID = this.state.inputID;
-    const ocrResults = this.state.ocrResults;
-    ocrResults[inputID] = input;
-    this.setState({ ocrResults: [...ocrResults] });
-  }
 
   render() {
-    // Fisierele sursa
-    const handleFilePath = (filePath) => {
-      if (filePath.length > 0) return "http://127.0.0.1:8000/media/" + filePath;
-      //https://httpbin.org/post
-      //http://127.0.0.1:8000/media/
-      return "https://cdn.presslabs.com/wp-content/uploads/2018/10/upload-error.png";
-    };
-    return (
-      <div className="step step4">
-        <div className="row">
-          <form id="Form" className="form-horizontal">
-            <div className="form-group">
-              <label className="control-label col-md-12 ">
-                <h1>
-                  Pasul 4: Verifică și editează rezultatul obținut după procesul
-                  OCR
-                </h1>
-              </label>
-            </div>
-            <div className="row mt-3">
-              <div className="form-group col-md-12 content form-block-holder">
-                <label className="control-label col-12">
-                  {this.state.ocrResults &&
-                    this.state.ocrResults.map((item, index) => {
-                      return (
-                        <div key={index}>
-                          <div className="row mb-3">
-                            <span className="ocrResultTitle text-info col-12">
-                              {`Rezultatul OCR pentru imaginea ${index + 1}:`}
-                              <button
-                                className="btn btn-keyboard col-1"
-                                type="button"
-                                title="Tatstatura Virtuală"
-                                onClick={() =>
-                                  this.setState({ show: !this.state.show })
-                                }
-                              >
-                                <svg
-                                  className="svg_keyboard"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path
-                                    fill="currentColor"
-                                    d="M19,10H17V8H19M19,13H17V11H19M16,10H14V8H16M16,13H14V11H16M16,17H8V15H16M7,10H5V8H7M7,13H5V11H7M8,11H10V13H8M8,8H10V10H8M11,11H13V13H11M11,8H13V10H11M20,5H4C2.89,5 2,5.89 2,7V17A2,2 0 0,0 4,19H20A2,2 0 0,0 22,17V7C22,5.89 21.1,5 20,5Z"
-                                  />
-                                </svg>
-                              </button>
-                            </span>
-                          </div>
-                          <textarea
-                            key={index}
-                            id={index}
-                            onFocus={this.setActiveInput.bind(this)}
-                            value={item}
-                            onChange={this.onChangeInput.bind(this)}
-                            className="form-control mb-4"
-                            rows="10"
-                          ></textarea>
-                          <a
-                            className="image_ocr_a"
-                            data-fancybox="gallery_2"
-                            data-src={
-                              this.state.preprocessedFiles[index] != undefined
-                                ? handleFilePath(
-                                  this.state.preprocessedFiles[index]
-                                )
-                                : "https://prikolnye-kartinki.ru/img/picture/Sep/23/9d857169c84422fdaa28df62667a1467/5.jpg"
-                            }
-                            data-caption={"imagine preprocesată"}
-                          >
-                            <img
-                              className="image_ocr"
-                              src={
-                                this.state.preprocessedFiles[index] != undefined
-                                  ? handleFilePath(
-                                    this.state.preprocessedFiles[index]
-                                  )
-                                  : "https://prikolnye-kartinki.ru/img/picture/Sep/23/9d857169c84422fdaa28df62667a1467/5.jpg"
-                              }
-                            />
-                          </a>
-                        </div>
-                      );
-                    })}
-                </label>
+    // explicit class assigning based on validation
+    // let notValidClasses = {};
 
-                {this.state.show && (
-                  <Keyboard
-                    keyboardRef={(r) => (this.keyboard = r)}
-                    layoutName={this.state.layoutName}
-                    onChange={(inputs) =>
-                      this.onChangeKeyboardInput(
-                        inputs,
-                        this.state.ocrResults[this.state.inputID]
-                      ).bind(this)
-                    }
-                    onKeyPress={this.onKeyPress.bind(this)}
-                    layout={this.cyrillicRomanianLayout.layout}
-                  />
-                )}
-              </div>
-              {/* <div className="form-group col-md-3 content form-block-image">
-                
-                {this.state.preprocessedFiles.map((src, index) => (
-                  <a
-                    className=""
-                    data-fancybox="gallery_2"
-                    data-src={handleFilePath(src)}
-                    data-caption="imagine originală"
-                    key={index}
-                  >
-                    <img
-                      className="Accordion_image"
-                      src={handleFilePath(src)}
+    const handleOCRRequest = async () => {
+      const ocrAPI = "http://127.0.0.1:8000/ocr/";
+
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(this.state)
+      };
+      const response = await fetch(ocrAPI, requestOptions);
+      const data = await response.json();
+
+      this.setState({ ocrResults: data.ocrResults });
+      this.props.updateStore({ ocrResults: data.ocrResults });
+      console.log(data);
+      this.setState({ show: false });
+    }
+
+    // if (typeof this.state.periodVal == 'undefined' || this.state.periodVal) {
+    //   notValidClasses.periodCls = 'no-error col-md-8';
+    // }
+    // else {
+    //   notValidClasses.periodCls = 'has-error col-md-8';
+    //   notValidClasses.periodValGrpCls = 'val-err-tooltip';
+    // }
+
+    // if (typeof this.state.emailVal == 'undefined' || this.state.emailVal) {
+    //   notValidClasses.emailCls = 'no-error col-md-8';
+    // }
+    // else {
+    //   notValidClasses.emailCls = 'has-error col-md-8';
+    //   notValidClasses.emailValGrpCls = 'val-err-tooltip';
+    // }
+    return (
+      <div className="step step3">
+        <div className="row">
+          <Form className="form-horizontal">
+            <Form.Group>
+              <label className="col-md-12 control-label">
+                <h1>Pasul 4: Recunoașterea optică a caracterelor - OCR </h1>
+              </label>
+            </Form.Group>
+
+            <div className="row content">
+              <Form.Group className="mb-3 col-sm">
+                <Form.Label>4.1 Selectează perioada documentului:</Form.Label>
+                <Form.Check
+                  label="Secolul XX"
+                  name="group5"
+                  type="radio"
+                  id="radio1"
+                  value="secolulXX"
+                  checked={this.state.period === "secolulXX"}
+                  onChange={() => { this.setState({ period: "secolulXX" }); this.props.updateStore({ period: "secolulXX" }); }}
+                />
+                <Form.Check
+                  label="Secolul XIX"
+                  name="group5"
+                  type="radio"
+                  id="radio2"
+                  value="secolulXIX"
+                  checked={this.state.period === "secolulXIX"}
+                  onChange={() => { this.setState({ period: "secolulXIX" }); this.props.updateStore({ period: "secolulXIX" }); }}
+                />
+                <Form.Check
+                  label="Secolul XVIII"
+                  name="group5"
+                  type="radio"
+                  id="radio3"
+                  value="secolulXVIII"
+                  checked={this.state.period === "secolulXVIII"}
+                  onChange={() => { this.setState({ period: "secolulXVIII" }); this.props.updateStore({ period: "secolulXVIII" }); }}
+
+                />
+                <Form.Check
+                  label="Secolul XVII"
+                  name="group5"
+                  type="radio"
+                  id="radio4"
+                  value="secolulXVII"
+                  checked={this.state.period === "secolulXVII"}
+                  onChange={() => { this.setState({ period: "secolulXVII" }); this.props.updateStore({ period: "secolulXVII" }); }}
+                />
+              </Form.Group>
+              <div className="col-sm mb-3">
+                {this.state.period === "secolulXX" && <>
+                  <Form.Group className="mb-3">
+                    <Form.Label>4.2 Selectează alfabetul documentului:</Form.Label>
+                    <Form.Check
+                      label="Alfabetul chirilic sovietic"
+                      name="group6"
+                      type="checkbox"
+                      id="radio11"
+                      value="cyrillic"
+                      checked={this.state.alphabet === "cyrillic"}
+                      onChange={() => { this.setState({ alphabet: "cyrillic" }); this.props.updateStore({ alphabet: "cyrillic" }); }}
                     />
-                  </a>
-                ))}
-              </div> */}
+
+                    <Form.Check
+                      label="Alfabetul românesc (latin)"
+                      name="group6"
+                      type="checkbox"
+                      id="radio12"
+                      value="latin"
+                      checked={this.state.alphabet === "latin"}
+                      onChange={() => { this.setState({ alphabet: "latin" }); this.props.updateStore({ alphabet: "latin" }); }}
+                    />
+                  </Form.Group>
+
+                </>}
+                {this.state.period === "secolulXIX" && <>TODO</>}
+                {this.state.period === "secolulXVIII" && <>TODO</>}
+                {this.state.period === "secolulXVII" && <>
+                  <Form.Group className="">
+                    <Form.Label>3.2 Selectează tipografia din Secolul XVII</Form.Label>
+                    <Form.Select value={this.state.typography} onChange={(e) => { this.setState({ typography: e.target.value }); this.props.updateStore({ typography: e.target.value }); }}>
+
+                      <option value="">Lista tipografiilor:</option>
+                      <option value="typography1">Tipariul cel Domnesc (Iași)</option>
+                      <option value="typography2">Casa Sfintei Mitropolii (Iași)</option>
+                      <option value="typography3">Tiparnița Tărâi (Iași)</option>
+                      <option value="typography4">Scaunul Mitropolii Bucureștilor (București)</option>
+                      <option value="typography5">Tipografia Domnească (Belgrad)</option>
+                      <option value="typography6">Mitropolia Belgradului (Belgrad)</option>
+                      <option value="typography7">Sfânta Mitropolie a Târgoviştii (Târgoviște)</option>
+                      <option value="typography8">Sfînta Mănăstire Uniev (Uniev)</option>
+                      <option value="typography9">Tipograf[ia] Noao (Sas Sebeș)</option>
+                      <option value="typography10">Tipografiia Domnească în Sfânta Mănăstire în Snagov (Snagov )</option>
+                      <option value="typography11">Tipografiia Domnească, la Episcupiia dela Buzău (Buzău)</option>
+
+                    </Form.Select>
+                    <span className='m-2' />
+                    <Form.Check
+                      label="Identifică automat fontul documentului"
+                      name="group7"
+                      type="checkbox"
+                      id="radio5"
+                      value="typographyAuto"
+                      checked={this.state.typography === "typographyAuto"}
+                      onChange={() => { this.setState({ typography: "typographyAuto" }); this.props.updateStore({ typography: "typographyAuto" }); }}
+
+                    />
+                    <Form.Check
+                      label="Alfabetul chirilic românesc"
+                      name="group6"
+                      type="checkbox"
+                      id="radio13"
+                      value="cyrillicRomanian"
+                      checked={this.state.alphabet === "cyrillicRomanian"}
+                      onChange={() => { this.setState({ alphabet: "cyrillicRomanian" }); this.props.updateStore({ alphabet: "cyrillicRomanian" }); }}
+                    />
+                  </Form.Group>
+                </>}
+              </div>
+
+
+              <div className="mt-5 mb-3 col-md-12 d-flex justify-content-center">
+                {this.state.period && this.state.show ? <Button variant="primary" onClick={handleOCRRequest}>Start OCR</Button> : <Button variant="primary" disabled>Start OCR</Button>}
+                {!this.state.show && <> <Button variant="primary mx-4" onClick={() => this.props.jumpToStep(3)}>Verifică și editează rezultatul</Button> </>}
+              </div>
+
             </div>
-          </form>
+          </Form>
         </div>
+
+        {/* preprocessed image and reognized text */}
+        <div className="row">
+          <div className="col-md-12 d-flex justify-content-around">
+            <div className="col-sm">
+              {this.state.sourceFiles.length != 0 && <>
+                <Accordion defaultActiveKey={['0']} alwaysOpen>
+                  <Accordion.Item eventKey="0">
+                    <Accordion.Header>Sursa - imagine preprocesată</Accordion.Header>
+                    <Accordion.Body>
+                      {
+                        this.state.preprocessedFiles.map((src, index) => (
+                          <div key={index} className="preprocessedFile mb-2">
+                            <span className="ocrResultTitle text-info">{`Imaginea ${index + 1}:`}</span>
+                            <img
+                              src={this.handleFilePath(src)}
+                              onClick={() => openImageViewer(index)}
+                              width="90%"
+                              key={index}
+                              alt="" />
+                          </div>
+                        ))
+                      }
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
+              </>}
+            </div>
+
+            <div className="col-sm">
+              {this.state.ocrResults != 0 && <>
+                <Accordion defaultActiveKey={['0']} alwaysOpen>
+                  <Accordion.Item eventKey="0">
+                    <Accordion.Header>Ținta - rezultatul OCR </Accordion.Header>
+                    <Accordion.Body>
+                      {
+                        this.state.ocrResults.map((text, index) => (
+                          <div className="ocrResult mb-4" key={index}>
+                            <span className="ocrResultTitle text-info">{`Rezultatul OCR pentru imaginea ${index + 1}:`}</span>
+                            <p key={index} alt="">{text}</p>
+                          </div>
+                        ))
+                      }
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
+              </>}
+            </div>
+          </div>
+        </div>
+
+
       </div>
-    );
+    )
   }
 }
-
-export default Step4;

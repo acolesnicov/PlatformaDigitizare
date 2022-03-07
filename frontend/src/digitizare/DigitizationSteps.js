@@ -4,12 +4,12 @@ import React, { Component } from "react";
 import StepZilla from "../components/StepZilla";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
-import Step2_5 from "./Step2_5";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
 import Step5 from "./Step5";
 import Step6 from "./Step6";
 import Step7 from "./Step7";
+import Step8 from "./Step8";
 
 import "../css/main.css";
 
@@ -103,9 +103,9 @@ export default class DigitizationSteps extends Component {
           ),
       },
       {
-          name: "2.5. Clasificarea conținutului eterogen",
+          name: "3. Clasificarea conținutului eterogen",
           component: (
-              <Step2_5
+              <Step3
                   getStore={() => this.getStore()}
                   updateStore={(u) => {
                       this.updateStore(u);
@@ -114,7 +114,7 @@ export default class DigitizationSteps extends Component {
           ),
       },
       {
-        name: "3. OCR",
+        name: "4. OCR",
         component: (
           <Step3
             getStore={() => this.getStore()}
@@ -125,7 +125,7 @@ export default class DigitizationSteps extends Component {
         ),
       },
       {
-        name: "4. Verifică OCR",
+        name: "5. Verifică OCR",
         component: (
           <Step4
             getStore={() => this.getStore()}
@@ -136,7 +136,7 @@ export default class DigitizationSteps extends Component {
         ),
       },
       {
-        name: "5. Transliterează",
+        name: "6. Transliterează",
         component: (
           <Step5
             getStore={() => this.getStore()}
@@ -147,7 +147,7 @@ export default class DigitizationSteps extends Component {
         ),
       },
       {
-        name: "6. Verifică transliterația",
+        name: "7. Verifică transliterația",
         component: (
           <Step6
             getStore={() => this.getStore()}
@@ -158,7 +158,7 @@ export default class DigitizationSteps extends Component {
         ),
       },
       {
-        name: "7. Folosește rezultatele",
+        name: "8. Folosește rezultatele",
         component: (
           <Step7
             getStore={() => this.getStore()}
