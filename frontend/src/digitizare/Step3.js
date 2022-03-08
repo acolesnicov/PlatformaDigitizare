@@ -128,7 +128,7 @@ const Step3 = (props) => {
         props.updateStore({ preprocessedFiles: data.preprocessedFiles });
     };
 
-    return (
+    return (<div>
         <div className="step step3">
             <div className="row">
                 <Form id="Form" className="form-horizontal">
@@ -205,7 +205,7 @@ const Step3 = (props) => {
                             </>
                         )}
 
-
+                    </div>
                     <div className="mt-5 mb-3 col-md-12 d-flex justify-content-center">
                         {selectedOption && show ? (
                             <Button variant="primary" onClick={handleHeterogenRequest}>
