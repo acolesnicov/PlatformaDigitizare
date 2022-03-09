@@ -71,7 +71,7 @@ const Step3 = (props) => {
 
     // Text
     const handleHeterogenTextChange = (e) => {
-        setHeterogenFragm({ ...heterogenText, [e.target.name]: e.target.checked });
+        setHeterogenText({ ...heterogenText, [e.target.name]: e.target.checked });
         props.updateStore({
             heterogenText: { ...heterogenText, [e.target.name]: e.target.checked },
         });
@@ -105,8 +105,6 @@ const Step3 = (props) => {
     // Fisierele sursa
     const handleFilePath = (filePath) => {
         if (filePath.length > 0) return "http://127.0.0.1:8000/media/" + filePath;
-        //https://httpbin.org/post
-        //http://127.0.0.1:8000/media/
         return "https://cdn.presslabs.com/wp-content/uploads/2018/10/upload-error.png";
     };
 
@@ -155,14 +153,27 @@ const Step3 = (props) => {
                             checked={selectedOption === "Homo"}
                             onChange={handleOptionChange}
                         />
-                    </Form.Group>
+                        </Form.Group>
 
-                        <div className="col-sm mb-3">
+                    <div className="col-sm mb-3">
+                        {selectedOption === "Fragm" && (
+                            <>
+                                <Form.Group>
+                                    <Form.Label>
+                                        3.1 Fragmentation
+                                    </Form.Label>
+                                </Form.Group>
+                            </>
+                        )}
+                    </div>
+
+
+                    <div className="col-sm mb-3">
                         {selectedOption === "Homo" && (
                             <>
                                 <Form.Group>
                                     <Form.Label>
-                                        2.2 Tipuri de conținut omogen:
+                                        3.2 Tipuri de conținut omogen:
                                     </Form.Label>
                                 </Form.Group>
                                 <Form.Group>
@@ -173,7 +184,7 @@ const Step3 = (props) => {
                                         id="radio3"
                                         value="Text"
                                         checked={selectedOption === "Text"}
-                                        onChange={handleOptionChange}
+                                            onChange={handleHeterogenHomoChange}
                                     />
                                     <Form.Check
                                         label="Score (music) for OMR"
@@ -182,7 +193,7 @@ const Step3 = (props) => {
                                         id="radio4"
                                         value="Score"
                                         checked={selectedOption === "Score"}
-                                        onChange={handleOptionChange}
+                                            onChange={handleHeterogenHomoChange}
                                     />
                                     <Form.Check
                                         label="Mathematics"
@@ -191,7 +202,7 @@ const Step3 = (props) => {
                                         id="radio5"
                                         value="Math"
                                         checked={selectedOption === "Math"}
-                                        onChange={handleOptionChange}
+                                            onChange={handleHeterogenHomoChange}
                                     />
                                     <Form.Check
                                         label="Other (process as image)"
@@ -200,15 +211,15 @@ const Step3 = (props) => {
                                         id="radio6"
                                         value="Other"
                                         checked={selectedOption === "Other"}
-                                        onChange={handleOptionChange}
+                                            onChange={handleHeterogenHomoChange}
                                     />
                                 </Form.Group>
                             </>
                         )}
-
+                
                     </div>
 
-                        <div className="mt-5 mb-3 col-md-12 d-flex justify-content-center">
+                    <div className="mt-5 mb-3 col-md-12 d-flex justify-content-center">
                         {selectedOption && show ? (
                             <Button variant="primary" onClick={handleHeterogenRequest}>
                                 Finish this step
@@ -235,7 +246,7 @@ const Step3 = (props) => {
             </div>
 
 
-            {/* source image */}
+    {/* source image */}
     <div className="row">
         <div className="col-md-12 d-flex justify-content-around">
             <div className="col-sm">
