@@ -124,15 +124,16 @@ const Step3 = (props) => {
         const data = await response.json();
         console.log(data);
 
-        setpreprocessedFiles(data.preprocessedFiles);
-        props.updateStore({ preprocessedFiles: data.preprocessedFiles });
+        //setpreprocessedFiles(data.preprocessedFiles);
+        //props.updateStore({ preprocessedFiles: data.preprocessedFiles });
     };
 
-    return (<div>
+    return (
         <div className="step step3">
             <div className="row">
                 <Form id="Form" className="form-horizontal">
-                    <Form.Group>
+                    <div className="row content">
+                        <Form.Group>
                         <Form.Label className="col-md-12 control-label">
                             <h1>Pasul 3: Clasificarea conținutului eterogen</h1>
                         </Form.Label>
@@ -156,7 +157,7 @@ const Step3 = (props) => {
                         />
                     </Form.Group>
 
-                    <div className="col-sm mb-3">
+                        <div className="col-sm mb-3">
                         {selectedOption === "Homo" && (
                             <>
                                 <Form.Group>
@@ -206,7 +207,8 @@ const Step3 = (props) => {
                         )}
 
                     </div>
-                    <div className="mt-5 mb-3 col-md-12 d-flex justify-content-center">
+
+                        <div className="mt-5 mb-3 col-md-12 d-flex justify-content-center">
                         {selectedOption && show ? (
                             <Button variant="primary" onClick={handleHeterogenRequest}>
                                 Finish this step
@@ -227,10 +229,11 @@ const Step3 = (props) => {
                                 </Button>{" "}
                             </>
                         )}
+                        </div>
                     </div>
                 </Form>
             </div>
-        </div>
+
 
             {/* source image */}
     <div className="row">
