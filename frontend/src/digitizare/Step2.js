@@ -36,9 +36,6 @@ const Step2 = (props) => {
   const [show, setShow] = React.useState(true);
 
   const handleOptionChange = (e) => {
-    // this.setState({
-    //   selectedOption: e.target.value,
-    // });
     setSelectedOption(e.target.value);
     props.updateStore({ preprocessWith: e.target.value });
     setShow(true);
@@ -102,7 +99,8 @@ const Step2 = (props) => {
     props.updateStore({ preprocessedFiles: data.preprocessedFiles });
   };
 
-  return (
+
+return (
     <div className="step step2">
       <div className="row">
         <Form id="Form" className="form-horizontal">
@@ -273,7 +271,7 @@ const Step2 = (props) => {
                     variant="primary mx-4"
                     onClick={() => props.jumpToStep(2)}
                   >
-                    Mergi la pasul următor - OCR
+                    Mergi la pasul următor - Fragmntare
                   </Button>{" "}
                 </>
               )}

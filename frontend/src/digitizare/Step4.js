@@ -129,7 +129,8 @@ export default class Step4 extends Component {
     //   notValidClasses.emailCls = 'has-error col-md-8';
     //   notValidClasses.emailValGrpCls = 'val-err-tooltip';
     // }
-    return (
+
+  return (
       <div className="step step3">
         <div className="row">
           <Form className="form-horizontal">

@@ -15,6 +15,8 @@ import "@fancyapps/ui/dist/fancybox.css";
 
 // Classify and fragmentate the images
 const Step3 = (props) => {
+
+
     console.log(props.getStore());
 
     const sourceFiles = props.getStore().sourceFiles;
@@ -26,18 +28,6 @@ const Step3 = (props) => {
     );
     const [heterogenHomo, setHeterogenHomo] = React.useState(
         props.getStore().heterogenHomo
-    );
-    const [heterogenText, setHeterogenText] = React.useState(
-        props.getStore().heterogenText
-    );
-    const [heterogenScore, setHeterogenScore] = React.useState(
-        props.getStore().heterogenScore
-    );
-    const [heterogenMath, setHeterogenMath] = React.useState(
-        props.getStore().heterogenMath
-    );
-    const [heterogenOther, setHeterogenOther] = React.useState(
-        props.getStore().heterogenOther
     );
     const [show, setShow] = React.useState(true);
 
@@ -69,38 +59,6 @@ const Step3 = (props) => {
         });
     };
 
-    // Text
-    const handleHeterogenTextChange = (e) => {
-        setHeterogenText({ ...heterogenText, [e.target.name]: e.target.checked });
-        props.updateStore({
-            heterogenText: { ...heterogenText, [e.target.name]: e.target.checked },
-        });
-    };
-
-    // Score (music)
-    const handleHeterogenScoreChange = (e) => {
-        setHeterogenScore({ ...heterogenScore, [e.target.name]: e.target.checked });
-        props.updateStore({
-            heterogenScore: { ...heterogenScore, [e.target.name]: e.target.checked },
-        });
-    };
-
-    // Math
-    const handleHeterogenMathChange = (e) => {
-        setHeterogenMath({ ...heterogenMath, [e.target.name]: e.target.checked });
-        props.updateStore({
-            heterogenMath: { ...heterogenMath, [e.target.name]: e.target.checked },
-        });
-    };
-
-    // Other
-    const handleHeterogenOtherChange = (e) => {
-        setHeterogenOther({ ...heterogenOther, [e.target.name]: e.target.checked });
-        props.updateStore({
-            heterogenOther: { ...heterogenOther, [e.target.name]: e.target.checked },
-        });
-    };
-
 
     // Fisierele sursa
     const handleFilePath = (filePath) => {
@@ -122,20 +80,24 @@ const Step3 = (props) => {
         const data = await response.json();
         console.log(data);
 
-        //setpreprocessedFiles(data.preprocessedFiles);
-        //props.updateStore({ preprocessedFiles: data.preprocessedFiles });
     };
 
     return (
+
         <div className="step step3">
             <div className="row">
-                <Form id="Form" className="form-horizontal">
+                
+            <Form id="Form" className="form-horizontal">
+            <Form.Group>
+                <Form.Label className="col-md-12 control-label">
+                            <h1>Pasul 3: Clasificarea conținutului eterogen</h1>
+                </Form.Label>
+            </Form.Group>
                     <div className="row content">
                         <Form.Group>
-                        <Form.Label className="col-md-12 control-label">
-                            <h1>Pasul 3: Clasificarea conținutului eterogen</h1>
-                        </Form.Label>
-                        <Form.Check
+                        <Form.Label>3.1 Selectează tipul de conținut:</Form.Label>
+
+                         <Form.Check
                             label="Conținutul eterogen"
                             name="group1"
                             type="radio"
@@ -154,6 +116,7 @@ const Step3 = (props) => {
                             onChange={handleOptionChange}
                         />
                         </Form.Group>
+                 {/*                        
 
                     <div className="col-sm mb-3">
                         {selectedOption === "Fragm" && (
@@ -165,8 +128,8 @@ const Step3 = (props) => {
                                 </Form.Group>
                             </>
                         )}
-                    </div>
-
+                    </div> 
+ 
 
                     <div className="col-sm mb-3">
                         {selectedOption === "Homo" && (
@@ -179,7 +142,7 @@ const Step3 = (props) => {
                                 <Form.Group>
                                     <Form.Check
                                         label="Text for OCR"
-                                        name="group1"
+                                        name="group2"
                                         type="radio"
                                         id="radio3"
                                         value="Text"
@@ -188,7 +151,7 @@ const Step3 = (props) => {
                                     />
                                     <Form.Check
                                         label="Score (music) for OMR"
-                                        name="group1"
+                                        name="group2"
                                         type="radio"
                                         id="radio4"
                                         value="Score"
@@ -197,7 +160,7 @@ const Step3 = (props) => {
                                     />
                                     <Form.Check
                                         label="Mathematics"
-                                        name="group1"
+                                        name="group2"
                                         type="radio"
                                         id="radio5"
                                         value="Math"
@@ -206,7 +169,7 @@ const Step3 = (props) => {
                                     />
                                     <Form.Check
                                         label="Other (process as image)"
-                                        name="group1"
+                                        name="group2"
                                         type="radio"
                                         id="radio6"
                                         value="Other"
@@ -218,8 +181,8 @@ const Step3 = (props) => {
                         )}
                 
                     </div>
-
-                    <div className="mt-5 mb-3 col-md-12 d-flex justify-content-center">
+               </div>  
+              <div className="mt-5 mb-3 col-md-12 d-flex justify-content-center">
                         {selectedOption && show ? (
                             <Button variant="primary" onClick={handleHeterogenRequest}>
                                 Finish this step
@@ -240,9 +203,10 @@ const Step3 = (props) => {
                                 </Button>{" "}
                             </>
                         )}
+               */}
                         </div>
-                    </div>
                 </Form>
+
             </div>
 
 
@@ -280,6 +244,7 @@ const Step3 = (props) => {
             </div>
         </div>
     </div>
-</div>  );
+</div>
+  ); 
 };
 export default Step3;

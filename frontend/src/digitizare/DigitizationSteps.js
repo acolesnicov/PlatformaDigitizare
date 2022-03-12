@@ -60,6 +60,10 @@ export default class DigitizationSteps extends Component {
         replaceApostrophe: true,
         removeHyphen: true,
       },
+        heterogenWith: "",
+        heterogenFragm: {},
+        heterogenHomo: {},
+
     };
   }
 
@@ -116,7 +120,7 @@ export default class DigitizationSteps extends Component {
       {
         name: "4. OCR",
         component: (
-          <Step3
+          <Step4
             getStore={() => this.getStore()}
             updateStore={(u) => {
               this.updateStore(u);
@@ -127,7 +131,7 @@ export default class DigitizationSteps extends Component {
       {
         name: "5. Verifică OCR",
         component: (
-          <Step4
+          <Step5
             getStore={() => this.getStore()}
             updateStore={(u) => {
               this.updateStore(u);
@@ -138,7 +142,7 @@ export default class DigitizationSteps extends Component {
       {
         name: "6. Transliterează",
         component: (
-          <Step5
+          <Step6
             getStore={() => this.getStore()}
             updateStore={(u) => {
               this.updateStore(u);
@@ -149,7 +153,7 @@ export default class DigitizationSteps extends Component {
       {
         name: "7. Verifică transliterația",
         component: (
-          <Step6
+          <Step7
             getStore={() => this.getStore()}
             updateStore={(u) => {
               this.updateStore(u);
@@ -160,7 +164,7 @@ export default class DigitizationSteps extends Component {
       {
         name: "8. Folosește rezultatele",
         component: (
-          <Step7
+          <Step8
             getStore={() => this.getStore()}
             updateStore={(u) => {
               this.updateStore(u);
@@ -169,7 +173,6 @@ export default class DigitizationSteps extends Component {
         ),
       },
     ];
-
     return (
       <div className="example">
         <div className="step-progress">
@@ -177,7 +180,6 @@ export default class DigitizationSteps extends Component {
             steps={steps}
             preventEnterSubmission={true}
             nextTextOnFinalActionStep={"Salvează rezultatele"}
-            // hocValidationAppliedTo={[3]}
             startAtStep={
               window.sessionStorage.getItem("step")
                 ? parseFloat(window.sessionStorage.getItem("step"))
