@@ -31,6 +31,11 @@ const Step3 = (props) => {
     );
     const [show, setShow] = React.useState(true);
 
+
+    const [selectedOption, setSelectedOption] = React.useState(
+        props.getStore().heterogenWith
+    );
+
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
         props.updateStore({ heterogenWith: e.target.value });
@@ -86,37 +91,37 @@ const Step3 = (props) => {
 
         <div className="step step3">
             <div className="row">
-                
-            <Form id="Form" className="form-horizontal">
-            <Form.Group>
-                <Form.Label className="col-md-12 control-label">
+
+                <Form id="Form" className="form-horizontal">
+                    <Form.Group>
+                        <Form.Label className="col-md-12 control-label">
                             <h1>Pasul 3: Clasificarea conținutului eterogen</h1>
-                </Form.Label>
-            </Form.Group>
+                        </Form.Label>
+                    </Form.Group>
                     <div className="row content">
                         <Form.Group>
-                        <Form.Label>3.1 Selectează tipul de conținut:</Form.Label>
+                            <Form.Label>3.1 Selectează tipul de conținut:</Form.Label>
 
-                         <Form.Check
-                            label="Conținutul eterogen"
-                            name="group1"
-                            type="radio"
-                            id="radio1"
-                            value="Fragm"
-                            checked={selectedOption === "Fragm"}
-                            onChange={handleOptionChange}
-                        />
-                        <Form.Check
-                            label="Conținutul omogen"
-                            name="group1"
-                            type="radio"
-                            id="radio2"
-                            value="Homo"
-                            checked={selectedOption === "Homo"}
-                            onChange={handleOptionChange}
-                        />
+                            <Form.Check
+                                label="Conținutul eterogen"
+                                name="group1"
+                                type="radio"
+                                id="radio1"
+                                value="Fragm"
+                                checked={selectedOption === "Fragm"}
+                                onChange={handleOptionChange}
+                            />
+                            <Form.Check
+                                label="Conținutul omogen"
+                                name="group1"
+                                type="radio"
+                                id="radio2"
+                                value="Homo"
+                                checked={selectedOption === "Homo"}
+                                onChange={handleOptionChange}
+                            />
                         </Form.Group>
-                 {/*                        
+                        {/*                        
 
                     <div className="col-sm mb-3">
                         {selectedOption === "Fragm" && (
@@ -204,47 +209,47 @@ const Step3 = (props) => {
                             </>
                         )}
                */}
-                        </div>
+                    </div>
                 </Form>
 
             </div>
 
 
-    {/* source image */}
-    <div className="row">
-        <div className="col-md-12 d-flex justify-content-around">
-            <div className="col-sm">
-                {sourceFiles.length != 0 && (
-                    <>
-                        <Accordion defaultActiveKey={["0"]} alwaysOpen>
-                            <Accordion.Item eventKey="0">
-                                <Accordion.Header>
-                                    Sursa - imagine originală{" "}
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                    {sourceFiles.map((src, index) => (
-                                        <a
-                                            className=""
-                                            data-fancybox="gallery_1"
-                                            data-src={handleFilePath(src.name)}
-                                            data-caption="imagine originală"
-                                            key={index}
-                                        >
-                                            <img
-                                                className="Accordion_image"
-                                                src={handleFilePath(src.name)}
-                                            />
-                                        </a>
-                                    ))}
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        </Accordion>
-                    </>
-                )}
+            {/* source image */}
+            <div className="row">
+                <div className="col-md-12 d-flex justify-content-around">
+                    <div className="col-sm">
+                        {sourceFiles.length != 0 && (
+                            <>
+                                <Accordion defaultActiveKey={["0"]} alwaysOpen>
+                                    <Accordion.Item eventKey="0">
+                                        <Accordion.Header>
+                                            Sursa - imagine originală{" "}
+                                        </Accordion.Header>
+                                        <Accordion.Body>
+                                            {sourceFiles.map((src, index) => (
+                                                <a
+                                                    className=""
+                                                    data-fancybox="gallery_1"
+                                                    data-src={handleFilePath(src.name)}
+                                                    data-caption="imagine originală"
+                                                    key={index}
+                                                >
+                                                    <img
+                                                        className="Accordion_image"
+                                                        src={handleFilePath(src.name)}
+                                                    />
+                                                </a>
+                                            ))}
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
+                            </>
+                        )}
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-  ); 
+    );
 };
 export default Step3;
