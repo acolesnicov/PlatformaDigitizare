@@ -31,7 +31,7 @@ const Step3 = (props) => {
     );
     const [show, setShow] = React.useState(true);
 
-    // fix step 3 by adding `selectedOptions` state
+    // fix step 3 by adding `selectedOption` state
     const [selectedOption, setSelectedOption] = React.useState(
         props.getStore().heterogenWith
     );
